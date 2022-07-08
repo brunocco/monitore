@@ -18,6 +18,9 @@ public class Cadastro {
 	@Column(name="nome", nullable = false)
 	private String nome;
 	
+	@Column(name="endereco")
+	private String endereco;
+	
 	@Column(name="cep")
 	private String cep;
 	
@@ -46,10 +49,11 @@ public class Cadastro {
 		
 	}
 
-	public Cadastro(String nome, String cep, String cpf, String celular1, String celular2, String email, String senha,
+	public Cadastro(String nome, String endereco, String cep, String cpf, String celular1, String celular2, String email, String senha,
 			String cSenha, String necessidade) {
 		super();
 		this.nome = nome;
+		this.endereco = endereco;
 		this.cep = cep;
 		this.cpf = cpf;
 		this.celular1 = celular1;
@@ -59,6 +63,7 @@ public class Cadastro {
 		this.cSenha = cSenha;
 		this.necessidade = necessidade;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -70,6 +75,14 @@ public class Cadastro {
 
 	public String getNome() {
 		return nome;
+	}
+	
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public void setNome(String nome) {

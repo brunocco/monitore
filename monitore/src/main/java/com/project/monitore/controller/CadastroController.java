@@ -52,6 +52,7 @@ public class CadastroController {
 		Cadastro existenciaDeCadastro = cadastroService.getCadastroByid(id);
 		existenciaDeCadastro.setId(id);
 		existenciaDeCadastro.setNome(cadastro.getNome());
+		existenciaDeCadastro.setEndereco(cadastro.getEndereco());
 		existenciaDeCadastro.setCep(cadastro.getCep());
 		existenciaDeCadastro.setCpf(cadastro.getCpf());
 		existenciaDeCadastro.setCelular1(cadastro.getCelular1());

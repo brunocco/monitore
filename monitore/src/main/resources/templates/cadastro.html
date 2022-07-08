@@ -46,7 +46,7 @@
 
       <br />
 
-      <form class="container myform">
+      <form th:action@{/index} th:objec="${cadastro}" method="POST" class="container myform">
         <!-- Nacionalidade -->
         <fieldset class="col-mb-3">
           <br />
@@ -57,9 +57,8 @@
               >Nome completo</label
             >
             <input
-              type="text"
+              type="text" name="nome" th:field="@{nome}"
               class="form-control input-passageiro"
-              id="input-name"
               placeholder="Digite seu nome"
             />
           </div>
@@ -71,9 +70,8 @@
               >Endereço</label
             >
             <input
-              type="text"
+              type="text" name="endereco" th:field="@{endereco}"
               class="form-control input-passageiro"
-              id="input-addres"
               placeholder="Digite seu endereço"
             />
           </div>
@@ -88,9 +86,8 @@
                 >CEP</label
               >
               <input
-                type="text"
+                type="text" name="cep" th:field="@{cep}"
                 class="form-control input-passageiro"
-                id="input-CEP"
                 placeholder="Ex: 00000-000"
               />
             </div>
@@ -129,7 +126,6 @@
                 class="form-select input-passageiro"
               >
                 <option selected>Selecione</option>
-                <option>RG</option>
                 <option>CPF</option>
                 
               </select>
@@ -145,9 +141,8 @@
                 >Digite o número</label
               >
               <input
-                type="text"
+                type="text" name="cpf" th:field="@{cpf}"
                 class="form-control input-passageiro"
-                id="input-Numero-Documemento"
                 placeholder="Ex: 000.000.000-00"
               />
             </div>
@@ -170,9 +165,8 @@
               >Número do celular</label
             >
             <input
-              type="text"
+              type="text" name="celular1" th:field="@{celular1}"
               class="form-control input-passageiro"
-              id="input-Numero-Documemento"
               placeholder="Ex: 000.000.000-00"
             />
           </div>
@@ -186,9 +180,8 @@
               >Número do celular</label
             >
             <input
-              type="text"
+              type="text" name="celular2" th:field="@{celular2}"
               class="form-control input-passageiro"
-              id="input-Numero-Documemento"
               placeholder="Ex: 000.000.000-00"
             />
           </div>
@@ -199,9 +192,8 @@
               >Email</label
             >
             <input
-              type="email"
+              type="email" name="email" th:field="@{email}"
               class="form-control input-passageiro"
-              id="input-email"
               placeholder="Digite um email válido"
             />
           </div>
@@ -213,9 +205,8 @@
               >Senha</label
             >
             <input
-              type="text"
+              type="text" name="senha" th:field="@{senha}"
               class="form-control input-passageiro"
-              id="input-senha"
               placeholder="Digite uma senha"
             />
           </div>
@@ -226,13 +217,26 @@
               >Confirme sua senha</label
             >
             <input
-              type="text"
+              type="text" name="cSenha" th:field="@{cSenha}"
               class="form-control input-passageiro"
-              id="input-senha2"
               placeholder="Digite a senha novamente"
             />
           </div>
 
+          <div class="col-md-5">
+
+              
+            <label
+              for="input-username"
+              class="form-label font-subtitle-branco"
+              >Possui Necessidades Especiais?:</label
+            >
+            <input
+              type="text" name="celular1" th:field="@{celular1}"
+              class="form-control input-passageiro"
+              placeholder="Ex. Locomoção, Surdez ..."
+            />
+          </div>
           
           <div class="form-check">
             <input
@@ -249,18 +253,6 @@
             </label>
           </div>
 
-          <div class="col-md">
-            <a
-              id="text-necessidades"
-              class="font-text-branco"
-              href="/Pages/NecessidadesEspeciais.html"
-              ><i class="bi bi-plus-circle-fill"></i
-              ><span>
-                Você precisa de atendimento especial?
-              </span>
-              <span class="link-necessidades">pessoa portadora de deficiência</span></a
-            >
-          </div>
 
           <br />
 
