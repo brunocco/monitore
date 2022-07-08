@@ -1,7 +1,9 @@
 package com.project.monitore.serviceImplements;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
+
 import com.project.monitore.entity.Cadastro;
 import com.project.monitore.repository.CadastroRepository;
 import com.project.monitore.service.CadastroService;
@@ -23,5 +25,39 @@ public class CadastroServiceImplements implements CadastroService {
 		return cadastroRepository.findAll();
 		
 	}
+	
 
-}
+
+
+	@Override
+	public Cadastro getCadastroByid(Long id) {
+		
+		return cadastroRepository.findById(id).get();
+	}
+
+
+	@Override
+	public Cadastro atualizarCadastro(Cadastro cadastro) {
+		
+		return cadastroRepository.save(cadastro);
+	}
+
+
+	@Override
+	public Cadastro salvarCadastro(Cadastro cadastro) {
+	
+		return cadastroRepository.save(cadastro);
+	}
+
+
+	@Override
+	public void excluirCadastroById(Long id) {
+		cadastroRepository.deleteById(id);
+		
+	}
+		
+	}
+	
+	
+	
+
