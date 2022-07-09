@@ -46,7 +46,7 @@
 
       <br />
 
-      <form th:action@{/index} th:objec="${cadastro}" method="POST" class="container myform">
+      <form th:action="@{/cadastros}" th:object="${cadastro}" method="POST" class="container myform">
         <!-- Nacionalidade -->
         <fieldset class="col-mb-3">
           <br />
@@ -57,7 +57,7 @@
               >Nome completo</label
             >
             <input
-              type="text" name="nome" th:field="@{nome}"
+              type="text" name="nome" th:field="*{nome}"
               class="form-control input-passageiro"
               placeholder="Digite seu nome"
             />
@@ -70,7 +70,7 @@
               >Endereço</label
             >
             <input
-              type="text" name="endereco" th:field="@{endereco}"
+              type="text" name="endereco" th:field="*{endereco}"
               class="form-control input-passageiro"
               placeholder="Digite seu endereço"
             />
@@ -86,7 +86,7 @@
                 >CEP</label
               >
               <input
-                type="text" name="cep" th:field="@{cep}"
+                type="text" name="cep" th:field="*{cep}"
                 class="form-control input-passageiro"
                 placeholder="Ex: 00000-000"
               />
@@ -122,7 +122,6 @@
                 >DOCUMENTO</label
               >
               <select
-                id="inputDocumemento"
                 class="form-select input-passageiro"
               >
                 <option selected>Selecione</option>
@@ -141,7 +140,7 @@
                 >Digite o número</label
               >
               <input
-                type="text" name="cpf" th:field="@{cpf}"
+                type="text" name="cpf" th:field="*{cpf}"
                 class="form-control input-passageiro"
                 placeholder="Ex: 000.000.000-00"
               />
@@ -165,7 +164,7 @@
               >Número do celular</label
             >
             <input
-              type="text" name="celular1" th:field="@{celular1}"
+              type="text" name="celular1" th:field="*{celular1}"
               class="form-control input-passageiro"
               placeholder="Ex: 000.000.000-00"
             />
@@ -180,7 +179,7 @@
               >Número do celular</label
             >
             <input
-              type="text" name="celular2" th:field="@{celular2}"
+              type="text" name="celular2" th:field="*{celular2}"
               class="form-control input-passageiro"
               placeholder="Ex: 000.000.000-00"
             />
@@ -192,7 +191,7 @@
               >Email</label
             >
             <input
-              type="email" name="email" th:field="@{email}"
+              type="text" name="email" th:field="*{email}"
               class="form-control input-passageiro"
               placeholder="Digite um email válido"
             />
@@ -205,7 +204,7 @@
               >Senha</label
             >
             <input
-              type="text" name="senha" th:field="@{senha}"
+              type="text" name="senha" th:field="*{senha}"
               class="form-control input-passageiro"
               placeholder="Digite uma senha"
             />
@@ -217,7 +216,7 @@
               >Confirme sua senha</label
             >
             <input
-              type="text" name="cSenha" th:field="@{cSenha}"
+              type="text" name="cSenha" th:field="*{cSenha}"
               class="form-control input-passageiro"
               placeholder="Digite a senha novamente"
             />
@@ -232,7 +231,7 @@
               >Possui Necessidades Especiais?:</label
             >
             <input
-              type="text" name="celular1" th:field="@{celular1}"
+              type="text" name="necessidade" th:field="*{necessidade}"
               class="form-control input-passageiro"
               placeholder="Ex. Locomoção, Surdez ..."
             />
@@ -266,7 +265,8 @@
               <div class="font-text-branco" id="div-btn-buscar">
                   <div class="col">
                   <div id="div-btn-voltar">
-                      <a class="font-text-branco" id="btn-voltar" href="/Pages\Perfil.html">Prosseguir</a>
+                     <!-- <a class="font-text-branco" id="btn-voltar" href="/Pages\Perfil.html">Prosseguir</a> -->
+                      <button type="submit" class="font-text-branco" href="/index/salvar">Prosseguir</button>
                   </div>
               </div>
               </div>

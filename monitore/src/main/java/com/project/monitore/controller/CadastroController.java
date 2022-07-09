@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.project.monitore.entity.Cadastro;
 import com.project.monitore.service.CadastroService;
@@ -20,21 +22,34 @@ public class CadastroController {
 		this.cadastroService = cadastroService;
 	}
 	
-	@GetMapping("/listaGeral")
+	/*
+	@RequestMapping(method = RequestMethod.GET, value="/cadastrar")
+	public String inicio() {
+		return "/banco/cadastrar";
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/salvarcadastro")
+	public String salvar(Cadastro cadastro){
+		cadastroRepository.save(cadastro);
+		return "/banco/cadastrar";
+	}*/
+	
+	
+	@GetMapping("/banco")
 	public String listarCasdastros(Model model) {
 		model.addAttribute("listaGeral", cadastroService.getAllCadastros());
-		return "listaGeral.html";
+		return "/banco/index.html";
 		
 	}
 	
-	@GetMapping("/index/cadastro")
+	@GetMapping("/banco/novo")
 	public String cadastrarViaForm(Model model) {
 		Cadastro cadastro = new Cadastro();
 		model.addAttribute("cadastro", cadastro);
-		return "/cadastro.html";
+		return "/banco/cadastrar.html";
 	}
 	
-	@PostMapping("/index")
+	@PostMapping("/index/salvar")
 	public String salvarCadastro(@ModelAttribute("cadastro") Cadastro cadastro) {
 		cadastroService.salvarCadastro(cadastro);
 		return "redirect:/index.html";
@@ -47,7 +62,7 @@ public class CadastroController {
 		return "/cadastro.html";
 	}
 	
-	@PostMapping
+	@PostMapping("cadastro/{id}")
 	public String atualizarCadastro (@PathVariable Long id, @ModelAttribute("cadastro") Cadastro cadastro, Model model ) {
 		Cadastro existenciaDeCadastro = cadastroService.getCadastroByid(id);
 		existenciaDeCadastro.setId(id);
