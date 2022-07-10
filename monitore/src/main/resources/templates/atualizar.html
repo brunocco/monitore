@@ -40,7 +40,7 @@
       <br />
 
       <div class="container" align="center">
-        <h4 class="font-title-preto">Cadastre-se</h4>
+        <h4 class="font-title-preto">Atualizar Cadastro</h4>
         <div id="divider-section"></div>
       </div>
 
@@ -50,7 +50,7 @@
         <!-- Nacionalidade -->
         <fieldset class="col-mb-3">
           <br />
-	  <form th:action="@{/cadastros}" th:object="${cadastro}" method="POST" class="container myform">
+	  <form th:action="@{/cadastros/{id}(id=${cadastro.id})}" th:object="${cadastro}" method="POST" class="container myform">
           <!-- Nome completo -->
           <div class="col-md">
             <label for="input-username" class="form-label font-subtitle-branco"
@@ -60,7 +60,7 @@
               type="text" name="nome" th:field="*{nome}"
               class="form-control input-passageiro"
               placeholder="Digite seu nome"
-            />
+            >
           </div>
 
           <br />

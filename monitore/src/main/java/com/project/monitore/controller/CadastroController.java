@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import com.project.monitore.entity.Cadastro;
 import com.project.monitore.service.CadastroService;
@@ -35,34 +34,34 @@ public class CadastroController {
 	}*/
 	
 	
-	@GetMapping("/banco")
+	@GetMapping("/cadastros")
 	public String listarCasdastros(Model model) {
 		model.addAttribute("listaGeral", cadastroService.getAllCadastros());
-		return "/banco/index.html";
+		return "/cadastros.html";
 		
 	}
 	
-	@GetMapping("/banco/novo")
+	@GetMapping("/cadastros/cadastro")
 	public String cadastrarViaForm(Model model) {
 		Cadastro cadastro = new Cadastro();
 		model.addAttribute("cadastro", cadastro);
-		return "/banco/cadastrar.html";
+		return "/cadastrar.html";
 	}
 	
-	@PostMapping("/index/salvar")
+	@PostMapping("/cadastros")
 	public String salvarCadastro(@ModelAttribute("cadastro") Cadastro cadastro) {
 		cadastroService.salvarCadastro(cadastro);
-		return "redirect:/index.html";
+		return "redirect:/cadastros.html";
 		
 	}
 	
-	@GetMapping("/index/editar/{id}")
+	@GetMapping("/cadastros/editar/{id}")
 	public String editarViaForm(@PathVariable Long id, Model model) {
 		model.addAttribute("cadastro", cadastroService.getCadastroByid(id));
-		return "/cadastro.html";
+		return "/atualizarCadastro.html";
 	}
 	
-	@PostMapping("cadastro/{id}")
+	@PostMapping("cadastros/{id}")
 	public String atualizarCadastro (@PathVariable Long id, @ModelAttribute("cadastro") Cadastro cadastro, Model model ) {
 		Cadastro existenciaDeCadastro = cadastroService.getCadastroByid(id);
 		existenciaDeCadastro.setId(id);
@@ -78,14 +77,14 @@ public class CadastroController {
 		existenciaDeCadastro.setNecessidade(cadastro.getNecessidade());
 		
 		cadastroService.atualizarCadastro(existenciaDeCadastro);
-		return "redirect:/index";
+		return "redirect:/cadastros";
 		
 	}
 	
-	@GetMapping("/index/excluir/{id}")
+	@GetMapping("/alunos/excluir/{id}")
 	public String excluirCadastro(@PathVariable Long id) {
 		cadastroService.excluirCadastroById(id);
-		return "redirect:/cadastro.html";
+		return "redirect:/cadastros.html";
 	}
 		
 	
