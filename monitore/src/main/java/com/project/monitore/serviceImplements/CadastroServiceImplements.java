@@ -30,7 +30,7 @@ public class CadastroServiceImplements implements CadastroService {
 
 
 	@Override
-	public Cadastro getCadastroByid(Long id) {
+	public Cadastro getCadastroById(Long id) {
 		
 		return cadastroRepository.findById(id).get();
 	}

@@ -10,7 +10,7 @@ public interface CadastroService {
 
 	Cadastro salvarCadastro(Cadastro cadastro);
 	
-	Cadastro getCadastroByid(Long id);
+	Cadastro getCadastroById(Long id);
 	
 	Cadastro atualizarCadastro(Cadastro cadastro);
 

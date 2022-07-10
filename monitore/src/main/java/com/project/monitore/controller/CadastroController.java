@@ -57,13 +57,13 @@ public class CadastroController {
 	
 	@GetMapping("/cadastros/editar/{id}")
 	public String editarViaForm(@PathVariable Long id, Model model) {
-		model.addAttribute("cadastro", cadastroService.getCadastroByid(id));
+		model.addAttribute("cadastro", cadastroService.getCadastroById(id));
 		return "/atualizarCadastro.html";
 	}
 	
 	@PostMapping("cadastros/{id}")
 	public String atualizarCadastro (@PathVariable Long id, @ModelAttribute("cadastro") Cadastro cadastro, Model model ) {
-		Cadastro existenciaDeCadastro = cadastroService.getCadastroByid(id);
+		Cadastro existenciaDeCadastro = cadastroService.getCadastroById(id);
 		existenciaDeCadastro.setId(id);
 		existenciaDeCadastro.setNome(cadastro.getNome());
 		existenciaDeCadastro.setEndereco(cadastro.getEndereco());
@@ -81,7 +81,7 @@ public class CadastroController {
 		
 	}
 	
-	@GetMapping("/alunos/excluir/{id}")
+	@GetMapping("/cadastros/excluir/{id}")
 	public String excluirCadastro(@PathVariable Long id) {
 		cadastroService.excluirCadastroById(id);
 		return "redirect:/cadastros.html";
