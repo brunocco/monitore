@@ -36,8 +36,8 @@ public class CadastroController {
 	
 	@GetMapping("/cadastros")
 	public String listarCasdastros(Model model) {
-		model.addAttribute("listaGeral", cadastroService.getAllCadastros());
-		return "/cadastros.html";
+		model.addAttribute("cadastros", cadastroService.getAllCadastros());
+		return "cadastros";
 		
 	}
 	
@@ -45,20 +45,20 @@ public class CadastroController {
 	public String cadastrarViaForm(Model model) {
 		Cadastro cadastro = new Cadastro();
 		model.addAttribute("cadastro", cadastro);
-		return "/cadastrar.html";
+		return "/cadastrar";
 	}
 	
-	@PostMapping("/cadastros")
+	@PostMapping("/pessoa/novo")
 	public String salvarCadastro(@ModelAttribute("cadastro") Cadastro cadastro) {
 		cadastroService.salvarCadastro(cadastro);
-		return "redirect:/cadastros.html";
+		return "redirect:/cadastros";
 		
 	}
 	
 	@GetMapping("/cadastros/editar/{id}")
 	public String editarViaForm(@PathVariable Long id, Model model) {
 		model.addAttribute("cadastro", cadastroService.getCadastroById(id));
-		return "/atualizarCadastro.html";
+		return "/atualizar";
 	}
 	
 	@PostMapping("cadastros/{id}")
@@ -84,7 +84,7 @@ public class CadastroController {
 	@GetMapping("/cadastros/excluir/{id}")
 	public String excluirCadastro(@PathVariable Long id) {
 		cadastroService.excluirCadastroById(id);
-		return "redirect:/cadastros.html";
+		return "redirect:/cadastros";
 	}
 		
 	

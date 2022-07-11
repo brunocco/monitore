@@ -18,7 +18,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
     />
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="CSS/styles.css" />
     <link rel="stylesheet" href="css/autocomplete.css" />
     <!-- Font -->
     <link
@@ -128,11 +128,11 @@
 					<td th:text="${cadastro.celular1}"></td>
 					<td th:text="${cadastro.celular2}"></td>
 					<td th:text="${cadastro.senha}"></td>
-					<td th:text="${cadastro.cSenha}"></td>
+					<td th:text="${cadastro.cSenha}"></td> 
 					<td th:text="${cadastro.necessidade}"></td>					
 		<td>
-		<a th:href="@{/cadastros/editar/{id}(id=${cadastro.id})}" class="btn btn-primary btn-sm mb3">Alterar</a>
-		<a th:href="@{/cadastros/excluir/{id}(id=${cadastro.id})}" class="btn btn-danger btn-sm mb3">Excluir</a>
+		<a th:href="@{/cadastros/editar/{id}(id=${cadastro.id})}" class="btn btn-primary ">Alterar</a>
+		<a th:href="@{/cadastros/excluir/{id}(id=${cadastro.id})}" class="btn btn-danger ">Excluir</a>
 		<!-- <a th:href="@{/rh/pessoas/excluir/{id}(id=${pessoa.id})}" class="btn btn-danger">Excluir</a> -->
 		</td>
 				</tr>
