@@ -48,7 +48,7 @@ public class CadastroController {
 		return "/cadastrar";
 	}
 	
-	@PostMapping("/pessoa/novo")
+	@PostMapping("/cadastros")
 	public String salvarCadastro(@ModelAttribute("cadastro") Cadastro cadastro) {
 		cadastroService.salvarCadastro(cadastro);
 		return "redirect:/cadastros";
@@ -70,10 +70,8 @@ public class CadastroController {
 		existenciaDeCadastro.setCep(cadastro.getCep());
 		existenciaDeCadastro.setCpf(cadastro.getCpf());
 		existenciaDeCadastro.setCelular1(cadastro.getCelular1());
-		existenciaDeCadastro.setCelular2(cadastro.getCelular2());
 		existenciaDeCadastro.setEmail(cadastro.getEmail());
 		existenciaDeCadastro.setSenha(cadastro.getSenha());
-		existenciaDeCadastro.setcSenha(cadastro.getcSenha());
 		existenciaDeCadastro.setNecessidade(cadastro.getNecessidade());
 		
 		cadastroService.atualizarCadastro(existenciaDeCadastro);

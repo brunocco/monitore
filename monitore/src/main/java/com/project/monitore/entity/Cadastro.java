@@ -1,10 +1,14 @@
 package com.project.monitore.entity;
 
+
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 @Entity
@@ -30,39 +34,31 @@ public class Cadastro {
 	@Column(name="celular1")
 	private String celular1;
 	
-	@Column(name="celular2")
-	private String celular2;
-	
 	@Column(name="email")
 	private String email;
 	
 	@Column(name="senha")
 	private String senha;
 	
-	@Column(name="cSenha")
-	private String cSenha;
-	
 	@Column(name="necessidade")
 	private String necessidade;
-	
+
 	public Cadastro() {
 		
 	}
 
-	public Cadastro(String nome, String endereco, String cep, String cpf, String celular1, String celular2, String email, String senha,
-			String cSenha, String necessidade) {
+	public Cadastro(String nome, String endereco, String cep, String cpf, String celular1, String email, String senha, String necessidade) {
 		super();
 		this.nome = nome;
 		this.endereco = endereco;
 		this.cep = cep;
 		this.cpf = cpf;
 		this.celular1 = celular1;
-		this.celular2 = celular2;
 		this.email = email;
 		this.senha = senha;
-		this.cSenha = cSenha;
 		this.necessidade = necessidade;
 	}
+
 
 
 	public Long getId() {
@@ -113,14 +109,6 @@ public class Cadastro {
 		this.celular1 = celular1;
 	}
 
-	public String getCelular2() {
-		return celular2;
-	}
-
-	public void setCelular2(String celular2) {
-		this.celular2 = celular2;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -135,14 +123,6 @@ public class Cadastro {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public String getcSenha() {
-		return cSenha;
-	}
-
-	public void setcSenha(String cSenha) {
-		this.cSenha = cSenha;
 	}
 
 	public String getNecessidade() {

@@ -111,11 +111,9 @@
 					<th>Cep</th>
 					<th>Cpf</th>
 					<th>Celular1</th>
-					<th>Celular2</th>
 					<th>Email</th>
-					<th>Senha</th>
-					<th>CSenha</th>				
-					<th>Nec.</th>
+					<th>Senha</th>			
+					<th>Nec.</th>					
 					<th>Ações</th>						
 				</tr>
 			</thead>
@@ -126,9 +124,8 @@
 					<td th:text="${cadastro.cep}"></td>
 					<td th:text="${cadastro.cpf}"></td>
 					<td th:text="${cadastro.celular1}"></td>
-					<td th:text="${cadastro.celular2}"></td>
+					<td th:text="${cadastro.email}"></td>
 					<td th:text="${cadastro.senha}"></td>
-					<td th:text="${cadastro.cSenha}"></td> 
 					<td th:text="${cadastro.necessidade}"></td>					
 		<td>
 		<a th:href="@{/cadastros/editar/{id}(id=${cadastro.id})}" class="btn btn-primary ">Alterar</a>
