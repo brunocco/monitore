@@ -29,7 +29,7 @@ public class Cadastro {
 	private String nome;
 	
 	@NotBlank(message = "Informe um endereço.")
-	@Size(min = 10, max = 60, message = "O campo endereco deve ter entre {min} e {max} caracteres.")
+	@Size(min = 10, max = 60, message = "O campo endereço deve ter entre {min} e {max} caracteres.")
 	@Column(name="endereco", nullable = false, length = 60)
 	private String endereco;
 	
@@ -40,7 +40,7 @@ public class Cadastro {
 	
 	@NotBlank(message = "Informe um CPF.")
 	@Pattern(regexp = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}", message ="O campo CPF deve seguir o padrão XXX.XXX.XXX-XX")
-	@Size(min = 14, max = 14, message = "O campo CPF deve conter 14 caracteres incluindo pontos e sinal separador antes dos dois ultimos numeros ")
+	@Size(min = 14, max = 14, message = "O campo CPF deve conter 14 caracteres incluindo pontos e sinal separador antes dos dois últimos números ")
 	@Column(name="cpf", unique = true, length = 14)
 	private String cpf;
 	
