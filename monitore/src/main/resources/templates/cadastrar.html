@@ -40,7 +40,7 @@
       <br />
 
       <div class="container" align="center">
-        <h4 class="font-title-preto">Cadastre-se</h4>
+        <h4 class="font-title-preto">Cadastro de Moradores</h4>
         <div id="divider-section"></div>
       </div>
 
@@ -51,6 +51,8 @@
         <fieldset class="col-mb-3">
           <br />
 	  <form th:action="@{/cadastros}" th:object="${cadastro}" method="POST" class="container myform">
+	  
+	  <div: th:replace="fragments/validacao :: validacao"></div:>
           <!-- Nome completo -->
           <div class="col-md">
             <label for="input-username" class="form-label font-subtitle-branco"
@@ -247,7 +249,7 @@
           <div class="row" id="section-btns-comprar" align="middle">
             <div class="col">
               <div id="div-btn-voltar">
-                <a class="font-text-branco" id="btn-voltar" href="/Pages/Login.html">Cancelar</a>
+                <a class="font-text-branco" id="btn-voltar" href="/cadastros">Cancelar</a>
               </div>
             </div>
             <div class="col">

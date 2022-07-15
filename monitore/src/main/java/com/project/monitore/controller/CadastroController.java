@@ -1,12 +1,16 @@
 package com.project.monitore.controller;
 
+import javax.naming.Binding;
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.monitore.entity.Cadastro;
 import com.project.monitore.service.CadastroService;
@@ -48,10 +52,24 @@ public class CadastroController {
 		return "/cadastrar";
 	}
 	
-	@PostMapping("/cadastros")
+	/*@PostMapping("/cadastros")
 	public String salvarCadastro(@ModelAttribute("cadastro") Cadastro cadastro) {
 		cadastroService.salvarCadastro(cadastro);
 		return "redirect:/cadastros";
+		
+	}*/
+	
+	@PostMapping("/cadastros")
+	public String salvar(@Valid Cadastro cadastro, BindingResult result, RedirectAttributes attr) {
+		
+		if (result.hasErrors()){
+			return "cadastrar";
+		}
+		
+		cadastroService.salvarCadastro(cadastro);
+		attr.addFlashAttribute("success", "Cadastro inserido com sucesso.");
+			return "redirect:/cadastros";
+		
 		
 	}
 	

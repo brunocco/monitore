@@ -10,7 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+@SuppressWarnings("Serial")
 @Entity
 @Table (name="Cadastros")
 public class Cadastro {
@@ -19,28 +23,45 @@ public class Cadastro {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="seq_cadastro")
 	private Long id;
 	
-	@Column(name="nome", nullable = false)
+	@NotBlank(message = "Informe um nome.")
+	@Size(min = 3, max = 60, message = "O campo nome deve ter entre {min} e {max} caracteres.")
+	@Column(name="nome", nullable = false, length = 60)
 	private String nome;
 	
-	@Column(name="endereco")
+	@NotBlank(message = "Informe um endereço.")
+	@Size(min = 10, max = 60, message = "O campo endereco deve ter entre {min} e {max} caracteres.")
+	@Column(name="endereco", nullable = false, length = 60)
 	private String endereco;
 	
-	@Column(name="cep")
+	@NotBlank(message = "Informe um CEP.")
+	@Pattern(regexp = "^[0-9]{5}-[0-9]{3}$", message ="O campo CEP deve seguir o padrão XXXXX-XXX.")
+	@Column(name="cep", nullable = false, length = 9)
 	private String cep;
 	
-	@Column(name="cpf")
+	@NotBlank(message = "Informe um CPF.")
+	@Pattern(regexp = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}", message ="O campo CPF deve seguir o padrão XXX.XXX.XXX-XX")
+	@Size(min = 14, max = 14, message = "O campo CPF deve conter 14 caracteres incluindo pontos e sinal separador antes dos dois ultimos numeros ")
+	@Column(name="cpf", unique = true, length = 14)
 	private String cpf;
 	
-	@Column(name="celular1")
+	@NotBlank(message = "Informe um celular.")
+	@Pattern(regexp = "^\\([1-9]{2}\\)(?:[2-8]|9[1-9])[0-9]{3}\\-[0-9]{4}$", message = "O campo celular deve seguir o padrão (XX)9XXXX-XXXX")
+	@Size(min = 14, max = 14, message = "O campo celular deve conter 14 caracteres")
+	@Column(name="celular1", nullable = false, unique = true, length = 14)
 	private String celular1;
 	
-	@Column(name="email")
+	@NotBlank(message = "Informe um e-mail.")
+	@Column(name="email", unique = true, nullable = false)
 	private String email;
 	
-	@Column(name="senha")
+	@NotBlank(message = "Informe uma senha.")
+	@Size(min = 6, max = 6, message = "O campo senha deve ter no mínimo {min} caracteres.")
+	@Column(name="senha", nullable = false, length = 6)
 	private String senha;
 	
-	@Column(name="necessidade")
+	@NotBlank(message = "Informe uma necessidade.")
+	@Size(min = 3, max = 10, message = "Se Morador não possuir necessidades especiais preencher como não")
+	@Column(name="necessidade", nullable = false)
 	private String necessidade;
 
 	public Cadastro() {

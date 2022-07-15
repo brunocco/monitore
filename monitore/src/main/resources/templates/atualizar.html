@@ -51,6 +51,8 @@
         <fieldset class="col-mb-3">
           <br />
 	  <form th:action="@{/cadastros/{id}(id=${cadastro.id})}" th:object="${cadastro}" method="POST" class="container myform">
+       
+       <div: th:replace="fragments/validacao :: validacao"></div:>   
           <!-- Nome completo -->
           <div class="col-md">
             <label for="input-username" class="form-label font-subtitle-branco"
