@@ -53,7 +53,9 @@ public class Cadastro {
 	
 	@UniqueCelular1
 	@NotBlank(message = "Campo celular em branco")
-	@Column(unique=true)
+	@Pattern(regexp = "^\\([1-9]{2}\\)(?:[2-8]|9[1-9])[0-9]{3}\\-[0-9]{4}$", message = "O campo celular deve seguir o padrão (XX)9XXXX-XXXX")
+	@Size(min = 14, max = 14, message = "O campo celular deve conter 14 caracteres")
+	@Column(name="celular1", unique = true, length = 14)
 	private String celular1;
 	
 	@NotBlank(message = "Informe um e-mail.")
