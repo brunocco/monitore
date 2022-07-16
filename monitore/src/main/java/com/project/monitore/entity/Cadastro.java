@@ -41,17 +41,23 @@ public class Cadastro {
 	@NotBlank(message = "Informe um CPF.")
 	@Pattern(regexp = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}", message ="O campo CPF deve seguir o padrão XXX.XXX.XXX-XX")
 	@Size(min = 14, max = 14, message = "O campo CPF deve conter 14 caracteres incluindo pontos e sinal separador antes dos dois últimos números ")
-	@Column(name="cpf", unique = true, length = 14)
+	@Column(name="cpf", length = 14)
 	private String cpf;
 	
+	/*
 	@NotBlank(message = "Informe um celular.")
 	@Pattern(regexp = "^\\([1-9]{2}\\)(?:[2-8]|9[1-9])[0-9]{3}\\-[0-9]{4}$", message = "O campo celular deve seguir o padrão (XX)9XXXX-XXXX")
 	@Size(min = 14, max = 14, message = "O campo celular deve conter 14 caracteres")
 	@Column(name="celular1", nullable = false, unique = true, length = 14)
+	private String celular1; */
+	
+	@UniqueCelular1
+	@NotBlank(message = "Campo celular em branco")
+	@Column(unique=true)
 	private String celular1;
 	
 	@NotBlank(message = "Informe um e-mail.")
-	@Column(name="email", unique = true, nullable = false)
+	@Column(name="email", nullable = false)
 	private String email;
 	
 	@NotBlank(message = "Informe uma senha.")

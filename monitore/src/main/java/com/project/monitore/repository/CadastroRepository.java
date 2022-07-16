@@ -6,4 +6,7 @@ import com.project.monitore.entity.Cadastro;
 
 public interface CadastroRepository extends JpaRepository<Cadastro, Long>{
 
+	boolean existsByCelular1(String celular1);
+	
+
 }
