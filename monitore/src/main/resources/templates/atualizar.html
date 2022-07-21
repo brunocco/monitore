@@ -18,7 +18,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
     />
     <!-- CSS -->
-    <link rel="stylesheet" href="CSS/styles.css"/>
+    <link rel="stylesheet" href="./CSS/styles.css"/>
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,18 +51,26 @@
         <fieldset class="col-mb-3">
           <br />
 	  <form th:action="@{/cadastros/{id}(id=${cadastro.id})}" th:object="${cadastro}" method="POST" class="container myform">
-       
-       <div: th:replace="fragments/validacao :: validacao"></div:>   
-          <!-- Nome completo -->
+	  
+<!-- <div: th:replace="fragments/validacao :: validacao"></div:>  para validar todos os campos de uma vez msgs em cima do forme front -->
+
           <div class="col-md">
             <label for="input-username" class="form-label font-subtitle-branco"
               >Nome completo</label
             >
+            
+             <!-- Mensagem de erro em campo especifico ficar vermelho as bordas -->           
             <input
               type="text" name="nome" th:field="*{nome}"
               class="form-control input-passageiro"
               placeholder="Digite seu nome"
-            >
+            />
+            
+            <!-- Mensagem de erro em campo especifico 
+            <div class="invalid-feedback">
+            <span th:errors="*{nome}"></span>
+          	</div>-->
+          	
           </div>
 
           <br />
@@ -71,11 +79,17 @@
             <label for="input-username" class="form-label font-subtitle-branco"
               >Endereço</label
             >
+             <!-- Mensagem de erro em campo especifico ficar vermelho as bordas -->
             <input
               type="text" name="endereco" th:field="*{endereco}"
               class="form-control input-passageiro"
               placeholder="Digite seu endereço"
             />
+            <!-- Mensagem de erro em campo especifico 
+            <div class="invalid-feedback">
+            <span th:errors="*{endereco}"></span>
+          	</div>-->
+          	
           </div>
 
           <br />
@@ -87,11 +101,19 @@
                 class="form-label font-subtitle-branco"
                 >CEP</label
               >
+              
+              <!-- Mensagem de erro em campo especifico ficar vermelho as bordas -->
               <input
-                type="text" name="cep" th:field="*{cep}"
+                type="text" name="cep" th:field="*{cep}"              
                 class="form-control input-passageiro"
                 placeholder="Ex: 00000-000"
               />
+              
+            <!-- Mensagem de erro em campo especifico 
+            <div class="invalid-feedback">
+            <span th:errors="*{cep}"></span>
+          	</div>-->
+          	              
             </div>
             <div class="col-md" id="search-correios">
               <a
@@ -117,21 +139,6 @@
 
           <div class="row">
 
-            <div class="col-md-4">
-              <label
-                for="inputPassageiro"
-                class="form-label font-subtitle-branco"
-                >DOCUMENTO</label
-              >
-              <select
-                class="form-select input-passageiro"
-              >
-                <option selected>Selecione</option>
-                <option>CPF</option>
-                
-              </select>
-            </div>
-
 
             <div class="col-md-5">
 
@@ -139,13 +146,20 @@
               <label
                 for="input-username"
                 class="form-label font-subtitle-branco"
-                >Digite o número</label
+                >CPF</label
               >
+              <!-- Mensagem de erro em campo especifico ficar vermelho as bordas -->              
               <input
-                type="text" name="cpf" th:field="*{cpf}"
+                type="text" name="cpf" th:field="*{cpf}"               
                 class="form-control input-passageiro"
                 placeholder="Ex: 000.000.000-00"
               />
+              
+            <!-- Mensagem de erro em campo especifico 
+            <div class="invalid-feedback">
+            <span th:errors="*{cpf}"></span>
+          	</div> -->
+          	              
             </div>
 
            
@@ -153,10 +167,7 @@
 
           <br />
 
-          
-
-          <br />
-          Cadastre o número do seu celular para receber SMS de alerta.
+          Número de celular para receber SMS de alerta.
           <div class="col-md-5">
 
               
@@ -165,24 +176,43 @@
               class="form-label font-subtitle-branco"
               >Número do celular</label
             >
+            
+            <!-- Mensagem de erro em campo especifico ficar vermelho as bordas -->              
             <input
-              type="text" name="celular1" th:field="*{celular1}"
+              type="text" name="celular1" th:field="*{celular1}"              
               class="form-control input-passageiro"
               placeholder="Ex: 000.000.000-00"
             />
+            
+            <!-- Mensagem de erro em campo especifico 
+            <div class="invalid-feedback">
+            <span th:errors="*{celular1}"></span>
+          	</div>-->
+          	            
           </div>
 
           <div class="col-md-5">
+
+             
+          <br>
 
           <div class="col-md">
             <label for="input-username" class="form-label font-subtitle-branco"
               >Email</label
             >
+            
+            <!-- Mensagem de erro em campo especifico ficar vermelho as bordas -->              
             <input
-              type="text" name="email" th:field="*{email}"
+              type="text" name="email" th:field="*{email}"              
               class="form-control input-passageiro"
               placeholder="Digite um email válido"
             />
+            
+            <!-- Mensagem de erro em campo especifico 
+            <div class="invalid-feedback">
+            <span th:errors="*{email}"></span>
+          	</div>-->
+          	            
           </div>
 
           <br>
@@ -191,12 +221,20 @@
             <label for="input-username" class="form-label font-subtitle-branco"
               >Senha</label
             >
+            
+            <!-- Mensagem de erro em campo especifico ficar vermelho as bordas -->              
             <input
-              type="text" name="senha" th:field="*{senha}"
+              type="text" name="senha" th:field="*{senha}"         
               class="form-control input-passageiro"
               placeholder="Digite uma senha"
             />
           </div>
+            
+            <!-- Mensagem de erro em campo especifico 
+            <div class="invalid-feedback">
+            <span th:errors="*{senha}"></span>
+          	</div>-->
+          	               
 
           <div class="col-md-5">
 
@@ -206,16 +244,32 @@
               class="form-label font-subtitle-branco"
               >Possui Necessidades Especiais?:</label
             >
+
+            <!-- Mensagem de erro em campo especifico ficar vermelho as bordas -->             
             <input
-              type="text" name="necessidade" th:field="*{necessidade}"
+              type="text" name="necessidade" th:field="*{necessidade}"              
               class="form-control input-passageiro"
               placeholder="Ex. Locomoção, Surdez ..."
             />
+            
+            <!-- Mensagem de erro em campo especifico 
+            <div class="invalid-feedback">
+            <span th:errors="*{necessidade}"></span>
+          	</div>-->
+          	               
+            
           </div>
           
-           </div>
-          
-
+          <!-- <div class="col-md">
+            <label for="" class="form-label font-subtitle-branco"
+              >Codigo Adm.</label
+            >
+            <input
+              type="text" name="administrador" th:field="*{administrador.codigo}"
+              class="form-control input-passageiro"
+              placeholder="Digite o cod adm."
+            />
+          </div> -->
 
           
           <div class="form-check">
@@ -239,7 +293,7 @@
           <div class="row" id="section-btns-comprar" align="middle">
             <div class="col">
               <div id="div-btn-voltar">
-                <a class="font-text-branco" id="btn-voltar" href="/Pages/Login.html">Cancelar</a>
+                <a class="font-text-branco" id="btn-voltar" href="/cadastros">Cancelar</a>
               </div>
             </div>
             <div class="col">
