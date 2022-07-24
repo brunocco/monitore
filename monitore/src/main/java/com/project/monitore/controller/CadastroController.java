@@ -1,7 +1,5 @@
 package com.project.monitore.controller;
 
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -9,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 
 import com.project.monitore.entity.Cadastro;
 import com.project.monitore.service.CadastroService;
@@ -43,51 +40,53 @@ public class CadastroController {
 	@GetMapping("/cadastros/cadastro")
 	public String cadastrarViaForm(Model model) {
 		Cadastro cadastro = new Cadastro();
-		model.addAttribute("cadastro", cadastro );
+		model.addAttribute("cadastro", cadastro);
 		return "/cadastrar.html";
 	}
 
-	
-	  @PostMapping("/cadastros") public String
-	  salvarCadastro(@ModelAttribute("cadastro") Cadastro cadastro) {
-	  cadastroService.salvarCadastro(cadastro); 
-	  return "redirect:/cadastros.html";
-	  
-	  }
-	 
-		/*
 	@PostMapping("/cadastros")
-	public String salvar(@Valid @ModelAttribute("cadastro")Cadastro cadastro, BindingResult result, RedirectAttributes attr) {
-
-		if (result.hasErrors()) {
-			return "cadastrar";
-		}
-
+	public String salvarCadastro(@ModelAttribute("cadastro") Cadastro cadastro) {
 		cadastroService.salvarCadastro(cadastro);
-		attr.addFlashAttribute("success", "Cadastro inserido com sucesso.");
-		return "redirect:/cadastrar";
+		return "redirect:/cadastros.html";
 
-	}*/
+	}
 
-	
-	  @GetMapping("/cadastros/editar/{id}") 
-	  public String editarViaForm(@PathVariable Long id, Model model) {
-		  	model.addAttribute("cadastro", cadastroService.getCadastroById(id)); 
-		  	return "/atualizar.html"; 
-	  }
-	 
+	/*
+	 * @PostMapping("/cadastros")
+	 * public String salvar(@Valid @ModelAttribute("cadastro")Cadastro cadastro,
+	 * BindingResult result, RedirectAttributes attr) {
+	 * 
+	 * if (result.hasErrors()) {
+	 * return "cadastrar";
+	 * }
+	 * 
+	 * cadastroService.salvarCadastro(cadastro);
+	 * attr.addFlashAttribute("success", "Cadastro inserido com sucesso.");
+	 * return "redirect:/cadastrar";
+	 * 
+	 * }
+	 */
 
-	/*@PostMapping("/editar/{id}")
-	public String editarViaForm2(@Valid Cadastro cadastro, BindingResult result, RedirectAttributes attr) {
+	@GetMapping("/cadastros/editar/{id}")
+	public String editarViaForm(@PathVariable Long id, Model model) {
+		model.addAttribute("cadastro", cadastroService.getCadastroById(id));
+		return "/atualizar.html";
+	}
 
-		if (result.hasErrors()) {
-			return "atualizar";
-		}
-
-		cadastroService.atualizarCadastro(cadastro);
-		attr.addFlashAttribute("success", "Cadastro atualizado com sucesso.");
-		return "redirect:/cadastros";
-	}*/
+	/*
+	 * @PostMapping("/editar/{id}")
+	 * public String editarViaForm2(@Valid Cadastro cadastro, BindingResult result,
+	 * RedirectAttributes attr) {
+	 * 
+	 * if (result.hasErrors()) {
+	 * return "atualizar";
+	 * }
+	 * 
+	 * cadastroService.atualizarCadastro(cadastro);
+	 * attr.addFlashAttribute("success", "Cadastro atualizado com sucesso.");
+	 * return "redirect:/cadastros";
+	 * }
+	 */
 
 	@PostMapping("cadastros/{id}")
 	public String atualizarCadastro(@PathVariable Long id, @ModelAttribute("cadastro") Cadastro cadastro, Model model) {
@@ -106,8 +105,6 @@ public class CadastroController {
 		return "redirect:/cadastros.html";
 
 	}
-
-
 
 	@GetMapping("/cadastros/excluir/{id}")
 	public String excluirCadastro(@PathVariable Long id) {
