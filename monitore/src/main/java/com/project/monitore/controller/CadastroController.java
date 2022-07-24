@@ -36,7 +36,7 @@ public class CadastroController {
 	@GetMapping("/cadastros")
 	public String listarCasdastros(Model model) {
 		model.addAttribute("cadastros", cadastroService.getAllCadastros());
-		return "cadastros";
+		return "cadastros.html";
 
 	}
 
@@ -44,14 +44,14 @@ public class CadastroController {
 	public String cadastrarViaForm(Model model) {
 		Cadastro cadastro = new Cadastro();
 		model.addAttribute("cadastro", cadastro );
-		return "/cadastrar";
+		return "/cadastrar.html";
 	}
 
 	
 	  @PostMapping("/cadastros") public String
 	  salvarCadastro(@ModelAttribute("cadastro") Cadastro cadastro) {
 	  cadastroService.salvarCadastro(cadastro); 
-	  return "redirect:/cadastros";
+	  return "redirect:/cadastros.html";
 	  
 	  }
 	 
@@ -73,7 +73,7 @@ public class CadastroController {
 	  @GetMapping("/cadastros/editar/{id}") 
 	  public String editarViaForm(@PathVariable Long id, Model model) {
 		  	model.addAttribute("cadastro", cadastroService.getCadastroById(id)); 
-		  	return "/atualizar"; 
+		  	return "/atualizar.html"; 
 	  }
 	 
 
@@ -103,7 +103,7 @@ public class CadastroController {
 		existenciaDeCadastro.setNecessidade(cadastro.getNecessidade());
 
 		cadastroService.atualizarCadastro(existenciaDeCadastro);
-		return "redirect:/cadastros";
+		return "redirect:/cadastros.html";
 
 	}
 
@@ -112,7 +112,7 @@ public class CadastroController {
 	@GetMapping("/cadastros/excluir/{id}")
 	public String excluirCadastro(@PathVariable Long id) {
 		cadastroService.excluirCadastroById(id);
-		return "redirect:/cadastros";
+		return "redirect:/cadastros.html";
 	}
 
 }
