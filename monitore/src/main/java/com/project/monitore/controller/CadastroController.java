@@ -33,7 +33,7 @@ public class CadastroController {
 	@GetMapping("/cadastros")
 	public String listarCasdastros(Model model) {
 		model.addAttribute("cadastros", cadastroService.getAllCadastros());
-		return "cadastro";
+		return "cadastros";
 
 	}
 
