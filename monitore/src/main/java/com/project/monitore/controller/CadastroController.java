@@ -41,7 +41,7 @@ public class CadastroController {
 	public String cadastrarViaForm(Model model) {
 		Cadastro cadastro = new Cadastro();
 		model.addAttribute("cadastro", cadastro);
-		return "/cadastrar";
+		return "cadastrar";
 	}
 
 	@PostMapping("/cadastros")
@@ -70,7 +70,7 @@ public class CadastroController {
 	@GetMapping("/cadastros/editar/{id}")
 	public String editarViaForm(@PathVariable Long id, Model model) {
 		model.addAttribute("cadastro", cadastroService.getCadastroById(id));
-		return "/atualizar";
+		return "atualizar";
 	}
 
 	/*
